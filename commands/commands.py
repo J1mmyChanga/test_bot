@@ -3,8 +3,8 @@ from aiogram.filters import CommandStart, Command
 from aiogram.utils import markdown
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from aiogram.enums import ParseMode
-from create_bot import *
-from ..misc import get_keyboard
+from create_dispatcher import *
+from misc import get_keyboard
 
 
 @dp.message(CommandStart())

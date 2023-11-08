@@ -2,9 +2,8 @@ from random import randint
 
 from aiogram import types, F
 from aiogram.utils import markdown
-from create_bot import *
-from ..misc import get_keyboard
-
+from create_dispatcher import *
+from misc import get_keyboard
 
 
 @dp.callback_query(F.data.startswith('num_'))

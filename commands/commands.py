@@ -4,11 +4,13 @@ from aiogram.utils import markdown
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from aiogram.enums import ParseMode
 from create_dispatcher import *
-from misc import get_keyboard
+from misc import *
 
 
 @dp.message(CommandStart())
 async def handle_command_start(message: types.Message):
+    session = create_session()
+    session.add()
     kb = [
         [types.KeyboardButton(text='Кнопочка 1')],
         [types.KeyboardButton(text='Кнопочка 2')],

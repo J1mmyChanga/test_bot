@@ -9,8 +9,6 @@ from misc import *
 
 @dp.message(CommandStart())
 async def handle_command_start(message: types.Message):
-    session = create_session()
-    session.add()
     kb = [
         [types.KeyboardButton(text='Кнопочка 1')],
         [types.KeyboardButton(text='Кнопочка 2')],
@@ -20,10 +18,18 @@ async def handle_command_start(message: types.Message):
         resize_keyboard=True,
         input_field_placeholder='Выберите кнопку',
     )
+
+    session = create_session()
+
+    if not session.query(Users).filter(Users.user_id==message.from_user.id):
+        session.add(Users(user_id=message.from_user.id, first_name=message.from_user.first_name, last_name=message.from_user.last_name))
+        text = 'юзера нет'
+    text = 'юзер есть'
     await message.answer(
-        text=f'Вывожу какой от текст',
+        text=text,
         reply_markup=keyboard,
     )
+    session.commit()
 
 
 # @dp.message(CommandStart())
